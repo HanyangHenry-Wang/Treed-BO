@@ -88,7 +88,7 @@ class tree_partation:
 
 def regression_tree (X,y,max_depth):
     
-    regr_1 = DecisionTreeRegressor(max_depth=max_depth)
+    regr_1 = DecisionTreeRegressor(max_depth=max_depth,min_samples_leaf=3)
     regr_1.fit(X, y)
     
     return regr_1
