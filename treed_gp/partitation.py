@@ -40,7 +40,7 @@ class tree_partation:
             new_split = new_split_point(self.X, dim, split)
 
 
-        left_node = tree_.children_left[node]
+        #left_node = tree_.children_left[node]
         if left_node==-1:  #check whether the node is a leaf node
             print ("node {} is leaf-node".format(node))
             print()

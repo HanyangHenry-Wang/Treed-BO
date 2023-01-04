@@ -5,6 +5,7 @@ from sklearn.tree import plot_tree
 
 from treed_gp.partitation import tree_partation
 from treed_gp.gp_all_llk import leaf_gp_all_llk
+from treed_gp.gp_leaf_llk import leaf_gp_leaf_llk
 import GPy
 
 # 2 dimensional example
@@ -65,7 +66,7 @@ import GPy
 ######################################################################################################
 # Using X,y from a GP
 
-np.random.seed(0)
+np.random.seed()
 rng = np.random.RandomState(1)
 X_sample1=np.array([[0]])
 Y_sample1=np.array([[0]])
@@ -88,9 +89,21 @@ print('leaf nodes are: ',my_class.leaf_nodes)
 print('paths are: ',my_class.record)
 
 leaf_nodes = my_class.leaf_nodes
+print('Here is the result of all likelihood!')
 for leaf in leaf_nodes:
     leaf_gp_temp = leaf_gp_all_llk(leaf,my_class)
     leaf_gp_temp.train_gp()
     lengthscale = leaf_gp_temp.lengthscale
     boundary = leaf_gp_temp.leaf_boundary
     print ("in leaf node {}, the lengthscale is {} and the boundary is {}".format(leaf,lengthscale,boundary))
+
+print('Here is the result of leaf likelihood!')
+for leaf in leaf_nodes:
+    leaf_gp_temp = leaf_gp_leaf_llk(leaf,my_class)
+    leaf_gp_temp.obtain_data()
+    leaf_gp_temp.train_gp()
+    lengthscale = leaf_gp_temp.lengthscale
+    boundary = leaf_gp_temp.leaf_boundary
+    print ("in leaf node {}, the lengthscale is {} and the boundary is {}".format(leaf,lengthscale,boundary))
+    print(leaf_gp_temp.X_leaf)
+    print(leaf_gp_temp.y_leaf)
