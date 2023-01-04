@@ -42,14 +42,14 @@ class tree_partation:
 
         #left_node = tree_.children_left[node]
         if left_node==-1:  #check whether the node is a leaf node
-            print ("node {} is leaf-node".format(node))
-            print()
+            # print ("node {} is leaf-node".format(node))
+            # print()
             self.leaf_nodes.append(node)
 
         
         if left_node>0:
-            print ("in node {}: dimension {} is smaller than or equal to {}".format(tree_.children_left[node],dim,new_split))
-            print ("in node {}: dimension {} is larger than or equal to {}".format(tree_.children_right[node],dim,new_split))
+            # print ("in node {}: dimension {} is smaller than or equal to {}".format(tree_.children_left[node],dim,new_split))
+            # print ("in node {}: dimension {} is larger than or equal to {}".format(tree_.children_right[node],dim,new_split))
             self.split_record[tree_.children_left[node]] = new_split
             self.split_record[tree_.children_right[node]] = new_split
             self.how_record[tree_.children_left[node]] = -1
