@@ -28,7 +28,7 @@ class tree_partation:
         
         tree_ = self.tree.tree_
         node = sofar_path[-1]
-        print(sofar_path)
+        #print(sofar_path)
 
         self.record.append(sofar_path)
 
