@@ -63,8 +63,8 @@ def treegp_log_llk (X_extract, y_extract, two_sigma_square):
 
   for i in range(len(depth_holder)):
     weight = 2/(1+depth_max-depth_holder[i]) #since we use log likelihood, we will 'multiply' the weight instead of doing 'power'
-    X_temp = X_extract[i]
-    y_temp = y_extract[i]
+    X_temp = X_extract[i] #if len(X_extract[i])>0 else 1
+    y_temp = y_extract[i] #if len(X_extract[i])>0 else 1
     temp = weight*log_llk(X_temp, y_temp, two_sigma_square)
     total_log_llk = total_log_llk+temp
 

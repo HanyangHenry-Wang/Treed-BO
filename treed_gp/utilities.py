@@ -61,12 +61,12 @@ def extract_data(X_group_path,y_group_path):
 
     X_bigger = X_inverse_path[i]
     X_smaller = X_inverse_path[i-1]
-    X_diff = np.array([x for x in X_bigger if x not in X_smaller])
+    X_diff = np.array([x for x in X_bigger if x.tolist() not in X_smaller.tolist()])
     X_holder.append(X_diff)
     
     y_bigger = y_inverse_path[i]
     y_smaller = y_inverse_path[i-1]
-    y_diff = np.array([y for y in y_bigger if y not in y_smaller])
+    y_diff = np.array([y for y in y_bigger if y.tolist() not in y_smaller.tolist()])
     y_holder.append(y_diff)
 
   return X_holder[::-1], y_holder[::-1]
