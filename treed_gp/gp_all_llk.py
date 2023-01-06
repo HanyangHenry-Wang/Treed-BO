@@ -15,7 +15,8 @@ class leaf_gp_all_llk:
             self.leaf = leaf
             self.tree_partation = tree_partation
             
-            return None 
+            return None
+          
         
         def train_gp(self):
           
@@ -30,6 +31,9 @@ class leaf_gp_all_llk:
             
             path = find_path(record,self.leaf)
             X_group_path, y_group_path, self.leaf_boundary = group_data(X,y,all_boundary ,path,dim_record,split_record,how_record)
+            
+            self.X_leaf = X_group_path[-1]
+            self.y_leaf = y_group_path[-1] 
             
             X_extract, y_extract = extract_data(X_group_path,y_group_path)
             self.lengthscale = treegp_optimise(X_extract, y_extract)
