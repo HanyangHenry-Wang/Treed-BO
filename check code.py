@@ -37,36 +37,36 @@ import GPy
 #########################################################################################################
 # 1 dimensional case
 
-#Create a random dataset
-# rng = np.random.RandomState(1)
-# X = np.sort(5 * rng.rand(24, 1), axis=0)
-# y = (10*np.sin(X)*np.cos(X/2)).ravel()
+# Create a random dataset
+rng = np.random.RandomState(1)
+X = np.sort(5 * rng.rand(24, 1), axis=0)
+y = (10*np.sin(X)*np.cos(X/2)).ravel()
 
-# my_class = tree_partation(X,y,[[0,5]],2)
-# print(my_class.X)
-# print(my_class.leaf_nodes)
+my_class = tree_partation(X,y,[[0,5]],2)
+print(my_class.X)
+print(my_class.leaf_nodes)
 
 
-# my_class.return_path([0], ['no'])
-# print('##################################')
-# print('after using the function')
-# print('leaf nodes are: ',my_class.leaf_nodes)
-# print('paths are: ',my_class.record)
+my_class.return_path([0], ['no'])
+print('##################################')
+print('after using the function')
+print('leaf nodes are: ',my_class.leaf_nodes)
+print('paths are: ',my_class.record)
 
-# leaf_nodes = my_class.leaf_nodes
-# for leaf in leaf_nodes:
-#     leaf_gp_temp = leaf_gp_all_llk(leaf,my_class)
-#     leaf_gp_temp.train_gp()
-#     lengthscale = leaf_gp_temp.lengthscale
-#     boundary = leaf_gp_temp.leaf_boundary
-#     print ("in leaf node {}, the lengthscale is {} and the boundary is {}".format(leaf,lengthscale,boundary))
+leaf_nodes = my_class.leaf_nodes
+for leaf in leaf_nodes:
+    leaf_gp_temp = leaf_gp_all_llk(leaf,my_class)
+    leaf_gp_temp.train_gp()
+    lengthscale = leaf_gp_temp.lengthscale
+    boundary = leaf_gp_temp.leaf_boundary
+    print ("in leaf node {}, the lengthscale is {} and the boundary is {}".format(leaf,lengthscale,boundary))
     
     
     
-######################################################################################################
-# Using X,y from a GP
+#####################################################################################################
+#Using X,y from a GP
 
-np.random.seed(3)
+np.random.seed(50)
 rng = np.random.RandomState(1)
 X_sample1=np.array([[0]])
 Y_sample1=np.array([[0]])
@@ -170,11 +170,12 @@ for leaf in leaf_nodes:
 
 # for exp in range(1):
 
-#   print(exp)
+#   #print(exp)
 #   torch.manual_seed(exp)
 
 #   ackley = Branin(negate=True) # I name my function ackley because the first function I tried is ackley
 #   a = 15*(torch.rand(20, 1,device=device, dtype=dtype))-5. #change boundary here !!!
+#   print('a is ',a)
 #   b = 15*(torch.rand(20, 1,device=device, dtype=dtype))  ##change boundary here !!!
 #   train_x = torch.column_stack((a, b))
 #   train_obj = ackley(train_x).unsqueeze(-1) 
@@ -183,8 +184,9 @@ for leaf in leaf_nodes:
 #   best_value_holder = [best_value] 
 
 
-#   for j in range (10):
-#     print('j is: ',j)
+#   for j in range (20):
+
+#     print('steps: ',j)
 
 #     best_value = best_value_holder[-1]
 
