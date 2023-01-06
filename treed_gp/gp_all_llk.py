@@ -9,6 +9,7 @@ from treed_gp.utilities import cov_RBF,log_llk
 
 
 class leaf_gp_all_llk:
+
         def __init__ (self,leaf,tree_partation):
 
             self.leaf = leaf
@@ -17,7 +18,7 @@ class leaf_gp_all_llk:
             return None 
         
         def train_gp(self):
-            
+          
             X = self.tree_partation.X
             y = self.tree_partation.y
             record = self.tree_partation.record
@@ -38,6 +39,16 @@ class leaf_gp_all_llk:
 ############################## Support Functions ##########################################
 
 def treegp_log_llk (X_extract, y_extract, two_sigma_square):
+  """_summary_
+
+  Args:
+      X_extract (_type_): _description_
+      y_extract (_type_): _description_
+      two_sigma_square (_type_): _description_
+
+  Returns:
+      _type_: _description_
+  """  
   
   depth_holder = np.array(range(len(X_extract)))
   depth_max = depth_holder[-1]
@@ -58,10 +69,19 @@ def treegp_log_llk (X_extract, y_extract, two_sigma_square):
 
 
 def treegp_optimise(X_extract, y_extract):
+    """_summary_
+
+    Args:
+      X_extract (_type_): _description_
+      y_extract (_type_): _description_
+
+    Returns:
+      _type_: _description_
+    """  
 
     opts ={'maxiter':1000,'maxfun':200,'disp': False}
 
-    bounds=np.asarray([[0.001,10.]])
+    bounds=np.asarray([[0.001,18.]])
 
     init_two_sigma_square = np.random.uniform(bounds[:, 0], bounds[:, 1],size=(50, 1))
     logllk_holder = [0]*init_two_sigma_square.shape[0]
