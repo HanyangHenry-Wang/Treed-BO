@@ -85,7 +85,7 @@ def treegp_optimise(X_extract, y_extract):
 
     opts ={'maxiter':1000,'maxfun':200,'disp': False}
 
-    bounds=np.asarray([[0.001,18.]])
+    bounds=np.asarray([[0.001,2*10.**2]])
 
     init_two_sigma_square = np.random.uniform(bounds[:, 0], bounds[:, 1],size=(50, 1))
     logllk_holder = [0]*init_two_sigma_square.shape[0]
