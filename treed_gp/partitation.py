@@ -4,12 +4,12 @@ from sklearn.tree import DecisionTreeRegressor
 
 class tree_partation:
     
-    def __init__ (self,X,y,boundary,max_depth):
+    def __init__ (self,X,y,boundary,max_depth,min_samples_leaf):
         self.X = X
         self.y = y
         self.boundary = boundary
         self.max_depth = max_depth
-        self.tree = regression_tree (X,y,max_depth)
+        self.tree = regression_tree (X,y,max_depth,min_samples_leaf)
          
         self.n_nodes = self.tree.tree_.node_count
         
@@ -86,9 +86,9 @@ class tree_partation:
 
 ############################## Support Functions ##########################################
 
-def regression_tree (X,y,max_depth):
+def regression_tree (X,y,max_depth,min_samples_leaf):
     
-    regr_1 = DecisionTreeRegressor(max_depth=max_depth,min_samples_leaf=6)
+    regr_1 = DecisionTreeRegressor(max_depth=max_depth,min_samples_leaf=min_samples_leaf)
     regr_1.fit(X, y)
     
     return regr_1
